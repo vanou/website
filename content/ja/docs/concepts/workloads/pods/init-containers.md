@@ -221,7 +221,7 @@ myapp-pod   1/1       Running   0          9m
 
 単一のPodが起動している間、ネットワークとボリュームが初期化されたのちに、Initコンテナは順番に起動されます。各Initコンテナは次のInitコンテナが起動する前に完了しなくてはなりません。もしあるInitコンテナがランタイムもしくはエラーにより起動失敗した場合、そのPodの`restartPolicy`の値をもとにリトライされます。しかし、もしPodの`retartPolicy`が`Always`に設定されていた場合、そのInitコンテナの`restartPolicy`は`OnFailure`となります。
 
-Podは全てのInitコンテナが完了するまで`Ready`状態となりません。Initコンテナ上のポートはServiceによって集約されません。初期化中のPodのステータスは`Pending`となりますが、`Initializing`という値はtrueとなります。
+Podは全てのInitコンテナが完了するまで`Ready`状態となりません。Initコンテナ上のポートはServiceによって集約されません。初期化中のPodのステータスは`Pending`となりますが、`Initialized`という値はtrueとなります。
 
 もしそのPodが[再起動](#pod-restart-reasons)されたとき、全てのInitコンテナは再度実行されなくてはなりません。
 
